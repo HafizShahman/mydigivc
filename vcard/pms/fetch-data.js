@@ -60,10 +60,13 @@ async function refreshData() {
   // Get the matricNo from the URL
   const urlParams = new URLSearchParams(window.location.search);
   const matricNo = urlParams.get('matricNo'); // Change 'id' to 'matricNo'
+  console.log("MatricNo from URL:", matricNo);
   try {
     const data = await fetchUserData(matricNo);
+    console.log("Fetched data:", data);
     displayUserData(data);
   } catch (e) {
+    console.error("Error fetching data:", e);
     ["name", "department", "icNumber", "matricNo"].forEach((id) => {
       document.getElementById(id).textContent = "Error loading data";
     });
