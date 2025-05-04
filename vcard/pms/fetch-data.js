@@ -41,7 +41,7 @@ function displayUserData(data) {
   if (data) {
     document.getElementById("name").textContent = data.name;
     document.getElementById("department").textContent = data.department;
-    // document.getElementById('phone').textContent = data.phone;
+    // document.getElementById('phone').textContent = data.phone; // Uncomment if phone data is available
     document.getElementById("icNumber").textContent = data.icNumber;
     document.getElementById("matricNo").textContent = data.matricNo;
   } else {
@@ -57,11 +57,9 @@ async function refreshData() {
   ["name", "department", "icNumber", "matricNo"].forEach((id) => {
     document.getElementById(id).textContent = "Loading...";
   });
-
   // Get the matricNo from the URL
   const urlParams = new URLSearchParams(window.location.search);
-  const matricNo = urlParams.get('id');
-
+  const matricNo = urlParams.get('matricNo'); // Change 'id' to 'matricNo'
   try {
     const data = await fetchUserData(matricNo);
     displayUserData(data);
@@ -72,6 +70,7 @@ async function refreshData() {
   }
 }
 
+// Uncomment if you have a refresh button
 // document.getElementById('refreshButton').addEventListener('click', refreshData);
 
 document.addEventListener("DOMContentLoaded", refreshData);
