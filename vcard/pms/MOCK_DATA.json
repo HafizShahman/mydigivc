@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Tc. Muhammad Hafiz Shahman Bin Mohd Nor Hisham",
+    "department": "Jabatan Teknologi Maklumat Dan Komunikasi",
+    "phone": "+60 19-584 4608",
+    "matricNo": "19DDT18F2070",
+    "icNumber": "990304-06-6435"
+  },
+  {
+    "name": "Muhammad ZulFaikha Amri Bin Md Zanuri",
+    "department": "Jabatan Teknologi Maklumat Dan Komunikasi",
+    "phone": "+60 17-826 2780",
+    "matricNo": "19DDT18F2025",
+    "icNumber": "000816-06-0891"
+  },
+  {
+    "name": "Nurul Ain Syafiqah Binti Fadzli",
+    "department": "Jabatan Pelancongan Dan Hospitaliti",
+    "phone": "+60 11-6121 9155",
+    "matricNo": "LA9660",
+    "icNumber": "020103-10-1014"
+  },
+  {
+    "name": "EIZLAN FAZLY BIN ZULHARIS",
+    "department": "Jabatan Perdagangan",
+    "phone": "+60 11-2319 4354",
+    "matricNo": "19DAT19F1005",
+    "icNumber": "010430140839"
+  },
+  {
+    "name": "Alfons Fippe",
+    "department": "Sales",
+    "phone": "+54 891 866 6674",
+    "matricNo": "QF7905",
+    "icNumber": "AV9376"
+  },
+  {
+    "name": "Heidi Bristow",
+    "department": "Product Management",
+    "phone": "+1 739 748 0025",
+    "matricNo": "EK6800",
+    "icNumber": "AA7284"
+  },
+  {
+    "name": "Janeva Kirckman",
+    "department": "Support",
+    "phone": "+20 398 400 1701",
+    "matricNo": "CX2721",
+    "icNumber": "SA5940"
+  }
+]

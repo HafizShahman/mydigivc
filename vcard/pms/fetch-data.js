@@ -1,30 +1,42 @@
-// Simulated function to fetch user data from API
-function fetchUserData() {
-  // Simulating async API call delay using Promise
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const apiResponse = {
-        name: "Tc. Muhammad Hafiz Shahman Bin Mohd Nor Hisham",
-        department: "Jabatan Teknologi Maklumat Dan Komunikasi",
-        // phone: "+1 234 567 8900",
-        icNumber: "990304066435",
-        matricNo: "19DDT18F2070",
-      };
-      resolve(apiResponse);
-    }, 800); // Simulated network delay
-  });
+async function fetchUserData() {
+  // const matricNo = "DL6412";
+  // Get the matricNo from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  let matricNo = urlParams.get("matricNo");
+  // Remove leading slashes if they exist
+  if (matricNo) {
+    matricNo = matricNo.replace('/', ''); // This will remove any leading slashes
+  }
+  try {
+    console.log(`Fetching user data for matricNo: ${matricNo}`);
+    const response = await fetch("MOCK_DATA.json"); // Ensure this file is in the correct path
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const apiResponses = await response.json();
+    console.log("Fetched user data:", apiResponses); // Log the fetched data
+    // Check for user data
+    const userData = apiResponses.find(
+      (user) => user.matricNo.toLowerCase() === matricNo.toLowerCase()
+    );
+    console.log("User  data found:", userData); // Log the found user data
+    return userData || null;
+  } catch (error) {
+    console.error("Error fetching user data from local MOCK_DATA.json:", error);
+    return null;
+  }
 }
 
 function displayUserData(data) {
   if (data) {
     document.getElementById("name").textContent = data.name;
     document.getElementById("department").textContent = data.department;
-    // document.getElementById('phone').textContent = data.phone;
+    document.getElementById("phone").textContent = data.phone;
     document.getElementById("icNumber").textContent = data.icNumber;
     document.getElementById("matricNo").textContent = data.matricNo;
   } else {
     // Handle case where no data is found
-    ["name", "department", "icNumber", "matricNo"].forEach((id) => {
+    ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
       document.getElementById(id).textContent = "No data found";
     });
   }
@@ -32,24 +44,27 @@ function displayUserData(data) {
 
 async function refreshData() {
   // Show loading placeholders
-  ["name", "department", "icNumber", "matricNo"].forEach((id) => {
+  ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
     document.getElementById(id).textContent = "Loading...";
   });
-
-  // Get the matricNo from the URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const matricNo = urlParams.get('id');
 
   try {
     const data = await fetchUserData(matricNo);
     displayUserData(data);
+    console.log(data);
   } catch (e) {
-    ["name", "department", "icNumber", "matricNo"].forEach((id) => {
+    console.error("Error during data refresh:", e);
+    ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
       document.getElementById(id).textContent = "Error loading data";
     });
   }
 }
 
-// document.getElementById('refreshButton').addEventListener('click', refreshData);
+// Set up event listeners
+const refreshButton = document.getElementById("refreshButton");
+if (refreshButton) {
+  refreshButton.addEventListener("click", refreshData);
+}
 
+// Fetch data when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", refreshData);
