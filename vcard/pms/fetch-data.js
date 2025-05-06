@@ -1,6 +1,7 @@
 async function fetchUserData() {
   // const matricNo = "DL6412";
   // Get the matricNo from the URL
+
   const urlParams = new URLSearchParams(window.location.search);
   let matricNo = urlParams.get("matricNo");
   // Remove leading slashes if they exist
@@ -28,15 +29,32 @@ async function fetchUserData() {
 }
 
 function displayUserData(data) {
+
   if (data) {
     document.getElementById("name").textContent = data.name;
     document.getElementById("department").textContent = data.department;
-    document.getElementById("phone").textContent = data.phone;
     document.getElementById("icNumber").textContent = data.icNumber;
     document.getElementById("matricNo").textContent = data.matricNo;
+    document.getElementById("pa").textContent = data.PA;
+    document.getElementById("class").textContent = data.class;
+    // Update phone number display
+    const phoneNumber = data.phone;
+    document.getElementById("phone").textContent = phoneNumber;
+    // Update the mobile link
+    const mNumber = phoneNumber.replace(/[\s+,-]/g, ''); 
+    const mobileLink = document.querySelector("a[href^='tel:']");
+    if (mobileLink) {
+      mobileLink.href = `tel:${mNumber}`;
+    }
+    // Update the WhatsApp link
+    // Remove spaces, "+", and "-"
+    const whatsappLink = document.querySelector("a[href^='https://api.whatsapp.com/send/?phone=']");
+    if (whatsappLink) {
+      whatsappLink.href = `https://api.whatsapp.com/send/?phone=${mNumber}`;
+    }
   } else {
     // Handle case where no data is found
-    ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
+    ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
       document.getElementById(id).textContent = "No data found";
     });
   }
@@ -44,7 +62,7 @@ function displayUserData(data) {
 
 async function refreshData() {
   // Show loading placeholders
-  ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
+  ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
     document.getElementById(id).textContent = "Loading...";
   });
 
@@ -54,7 +72,7 @@ async function refreshData() {
     console.log(data);
   } catch (e) {
     console.error("Error during data refresh:", e);
-    ["name", "department", "icNumber", "matricNo", "phone"].forEach((id) => {
+    ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
       document.getElementById(id).textContent = "Error loading data";
     });
   }
