@@ -47,7 +47,28 @@ function displayUserData(data) {
     const dept = data.department;
     document.getElementById("department").textContent =
       departmentMapping[dept] || "Tiada Jabatan";
+
+    //set color for every department
     document.documentElement.style.backgroundColor = getDepartmentColor(dept);
+    const infoElement = document.getElementById("info");
+    if (infoElement) {
+      infoElement.style.borderColor = getDepartmentColor(dept);
+    }
+    const sectionElements = document.getElementsByClassName("section");
+    if (sectionElements && sectionElements.length > 0) {
+      for (let i = 0; i < sectionElements.length; i++) {
+        sectionElements[i].style.borderColor = getDepartmentColor(dept);
+      }
+    }
+    const actionBtnElements = document.getElementsByClassName("actionBtn");
+    if (actionBtnElements && actionBtnElements.length > 0) {
+      for (let i = 0; i < actionBtnElements.length; i++) {
+        const anchor = actionBtnElements[i].querySelector("a");
+        if (anchor) {
+          anchor.style.backgroundColor = getDepartmentColor(dept);
+        }
+      }
+    }
 
 
     document.getElementById("class").textContent = data.class;
