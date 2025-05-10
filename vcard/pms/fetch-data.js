@@ -6,7 +6,7 @@ async function fetchUserData() {
   let matricNo = urlParams.get("matricNo");
   // Remove leading slashes if they exist
   if (matricNo) {
-    matricNo = matricNo.replace('/', ''); // This will remove any leading slashes
+    matricNo = matricNo.replace("/", ""); // This will remove any leading slashes
   }
   try {
     console.log(`Fetching user data for matricNo: ${matricNo}`);
@@ -29,40 +29,83 @@ async function fetchUserData() {
 }
 
 function displayUserData(data) {
+  const departmentMapping = {
+    JTMK: "Jabatan Teknologi Maklumat Dan Komunikasi",
+    JPH: "Jabatan Pelancongan Dan Hospitaliti",
+    JP: "Jabatan Perdagangan",
+    JRKV: "Jabatan Rekabentuk dan Komunikasi Visual",
+    JKM: "Jabatan Kejuruteraan Dan Mekanikal",
+  };
 
   if (data) {
     document.getElementById("name").textContent = data.name;
-    document.getElementById("department").textContent = data.department;
     document.getElementById("icNumber").textContent = data.icNumber;
     document.getElementById("matricNo").textContent = data.matricNo;
     document.getElementById("pa").textContent = data.PA;
+    // document.getElementById("department").textContent = data.department;
+
+    const dept = data.department;
+    document.getElementById("department").textContent =
+      departmentMapping[dept] || "Tiada Jabatan";
+    document.documentElement.style.backgroundColor = getDepartmentColor(dept);
+
+
     document.getElementById("class").textContent = data.class;
     // Update phone number display
     const phoneNumber = data.phone;
     document.getElementById("phone").textContent = phoneNumber;
     // Update the mobile link
-    const mNumber = phoneNumber.replace(/[\s+,-]/g, ''); 
+    const mNumber = phoneNumber.replace(/[\s+,-]/g, "");
     const mobileLink = document.querySelector("a[href^='tel:']");
     if (mobileLink) {
       mobileLink.href = `tel:${mNumber}`;
     }
     // Update the WhatsApp link
     // Remove spaces, "+", and "-"
-    const whatsappLink = document.querySelector("a[href^='https://api.whatsapp.com/send/?phone=']");
+    const whatsappLink = document.querySelector(
+      "a[href^='https://api.whatsapp.com/send/?phone=']"
+    );
     if (whatsappLink) {
       whatsappLink.href = `https://api.whatsapp.com/send/?phone=${mNumber}`;
     }
   } else {
     // Handle case where no data is found
-    ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
+    [
+      "name",
+      "department",
+      "icNumber",
+      "matricNo",
+      "phone",
+      "pa",
+      "class",
+    ].forEach((id) => {
       document.getElementById(id).textContent = "No data found";
     });
   }
 }
 
+function getDepartmentColor(department) {
+  const colors = {
+      "JTMK": "hsl(280, 89%, 30%)",
+      "JPH": "hsl(225, 77.00%, 77.80%)",
+      "JP": "hsl(225, 86.90%, 44.90%)",
+      "JRKV": "hsl(239, 87.30%, 27.80%)",
+      "JKM": "hsl(0, 30.60%, 48.60%)"
+  };
+  return colors[department] || "hsl(0, 0.60%, 31.20%)";
+}
+
 async function refreshData() {
   // Show loading placeholders
-  ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
+  [
+    "name",
+    "department",
+    "icNumber",
+    "matricNo",
+    "phone",
+    "pa",
+    "class",
+  ].forEach((id) => {
     document.getElementById(id).textContent = "Loading...";
   });
 
@@ -72,16 +115,18 @@ async function refreshData() {
     console.log(data);
   } catch (e) {
     console.error("Error during data refresh:", e);
-    ["name", "department", "icNumber", "matricNo", "phone", "pa", "class"].forEach((id) => {
+    [
+      "name",
+      "department",
+      "icNumber",
+      "matricNo",
+      "phone",
+      "pa",
+      "class",
+    ].forEach((id) => {
       document.getElementById(id).textContent = "Error loading data";
     });
   }
-}
-
-// Set up event listeners
-const refreshButton = document.getElementById("refreshButton");
-if (refreshButton) {
-  refreshButton.addEventListener("click", refreshData);
 }
 
 // Fetch data when the DOM is fully loaded
