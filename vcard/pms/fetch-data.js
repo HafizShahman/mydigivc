@@ -71,10 +71,7 @@ function displayUserData(data) {
 
     const profilePhotoElement = document.getElementById("profilePhoto");
     if (profilePhotoElement) {
-      profilePhotoElement.src = data.image;
-      profilePhotoElement.alt = "Profile Photo";
-    } else {
-      profilePhotoElement.src = "photo_default.jpg";
+      profilePhotoElement.src = data.image || "photo_default.jpg";
       profilePhotoElement.alt = "Profile Photo";
     }
   
