@@ -147,6 +147,7 @@ main {
   -ms-user-select: none;
   user-select: none;
   margin-top: -6rem;
+  object-fit: cover;
 }
 #info {
   display: flex;
