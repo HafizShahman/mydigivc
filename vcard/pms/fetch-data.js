@@ -68,6 +68,16 @@ function displayUserData(data) {
     if (whatsappLink) {
       whatsappLink.href = `https://api.whatsapp.com/send/?phone=${mNumber}`;
     }
+
+    const profilePhotoElement = document.getElementById("profilePhoto");
+    if (profilePhotoElement) {
+      profilePhotoElement.src = data.image;
+      profilePhotoElement.alt = "Profile Photo";
+    } else {
+      profilePhotoElement.src = "photo_default.jpg";
+      profilePhotoElement.alt = "Profile Photo";
+    }
+  
   } else {
     // Handle case where no data is found
     [

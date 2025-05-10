@@ -6,7 +6,8 @@
     "matricNo": "19DDT18F2070",
     "icNumber": "990304-06-6435",
     "PA": "En. Abdullah Azraai",
-    "class": "DDT18A"
+    "class": "DDT18A",
+    "image": "photo_hafiz.jpeg"
   },
   {
     "name": "Muhammad ZulFaikha Amri Bin Md Zanuri",
@@ -24,7 +25,8 @@
     "matricNo": "19DRT20F1009",
     "icNumber": "020103-10-1014",
     "PA": "Pn. Siti Nor",
-    "class": "DRT20F"
+    "class": "DRT20F",
+    "image": "photo_ain.jpeg"
   },
   {
     "name": "EIZLAN FAZLY BIN ZULHARIS",
