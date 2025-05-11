@@ -56,14 +56,30 @@
     "PA": "Ms. Jane Doe",
     "class": "DRG20",
     "image": "photo_din.png"
+  }
+    {
+    "name": "Nabil Asyraf Bin Wagimin",
+    "department": "JPH",
+    "phone": "+60 13-9765073",
+    "matricNo": "19DRT17F2029",
+    "icNumber": "960617-01-6917",
+    "PA": "En. Annal Sabrie",
+    "class": "DRT1A",
+    "kinName":"Wagimin",
+    "kinRelation":"Ayah",
+    "kinAddr":"7 Jln Putera Indah 12/3B Tmn Putera Indah, Tongkang Pecah 83010 Batu Pahat"
   },
   {
-    "name": "Janeva Kirckman",
-    "department": "Support",
-    "phone": "+20 398 400 1701",
-    "matricNo": "CX2721",
-    "icNumber": "SA5940",
-    "PA": "Mr. John Smith",
-    "class": "SUP01"
+    "name": "Muhammad Aqil Waqiuddin Bin Faizal",
+    "department": "JPH",
+    "phone": "+60 13- 322 3836",
+    "matricNo": "19DRT20F1001",
+    "icNumber": "020818-01-1717",
+    "PA": "Pn. Farrah Waheeda Binti Azan",
+    "class": "DRT350A",
+    "image": "Aqilfaizal.JPG",
+    "kinName":"Faizal",
+    "kinRelation":"Father",
+    "kinAddr":"786, 3/8, Jalan Anggerik, Taman Anggerik, Bandar Tenggara, 81440, Kulai, Johor"
   }
 ]
