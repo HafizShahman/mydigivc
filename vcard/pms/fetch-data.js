@@ -70,6 +70,20 @@ function displayUserData(data) {
       }
     }
 
+    //kin
+    const kinName = data.kinName;
+    if(kinName){
+      document.getElementById("kinName").textContent = kinName;
+    }
+    const kinRelation = data.kinRelation;
+    if(kinRelation){
+      document.getElementById("kinRelation").textContent = kinRelation;
+    }
+    const kinAddr = data.kinAddr;
+    if(kinAddr){
+      document.getElementById("kinAddr").textContent = kinAddr;
+    }
+
 
     document.getElementById("class").textContent = data.class;
     // Update phone number display
@@ -92,7 +106,7 @@ function displayUserData(data) {
 
     const profilePhotoElement = document.getElementById("profilePhoto");
     if (profilePhotoElement) {
-      profilePhotoElement.src = data.image || "photo_default.jpg";
+      profilePhotoElement.src = "image/" + data.image || "photo_default.jpg";
       profilePhotoElement.alt = "Profile Photo";
     }
   

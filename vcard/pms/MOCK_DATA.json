@@ -7,8 +7,10 @@
     "icNumber": "990304-06-6435",
     "PA": "En. Abdullah Azraai",
     "class": "DDT18A",
-    "image": "photo_hafiz3.jpg"
-  },
+    "image": "photo_hafiz3.jpg",
+    "kinName":"Hisham",
+    "kinRelation":"Ayah",
+    "kinAddr":"28, Lorong Damai 27, Sungai Isap Damai, Kuantan"  },
   {
     "name": "Muhammad ZulFaikha Amri Bin Md Zanuri",
     "department": "JTMK",
@@ -77,6 +79,7 @@
     "icNumber": "020818-01-1717",
     "PA": "Pn. Farrah Waheeda Binti Azan",
     "class": "DRT350A",
+    "image": "Aqilfaizal.JPG",
     "kinName":"Faizal",
     "kinRelation":"Father",
     "kinAddr":"786, 3/8, Jalan Anggerik, Taman Anggerik, Bandar Tenggara, 81440, Kulai, Johor"
