@@ -70,6 +70,17 @@ function displayUserData(data) {
       }
     }
 
+    const kamsis = data.kamsis;
+    const kamsisElement = document.getElementById("kamsis");
+    const kamsisSection = document.getElementById("kamsisSection");
+    if (kamsis) {
+      kamsisElement.textContent = kamsis;
+      kamsisSection.style.display = "block";
+    } else {
+      kamsisSection.style.display = "none";
+
+    }
+
     //kin
     const kinName = data.kinName;
     if(kinName){
